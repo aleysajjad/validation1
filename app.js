@@ -30,16 +30,11 @@ if(password.value !== againpassword.value){
 
 }
 
-
-
 if(contact.value.length < 10){
    errors.push("The number should be at least 10 marks")
 
 }
 
-else{
-   alert("All Done");
-}
 
 
    if(errors.length > 0){
