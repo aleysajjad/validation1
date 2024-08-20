@@ -1,35 +1,54 @@
-function data()
- {
+var username = document.getElementById("username");
+var password = document.getElementById("password");
+var againpassword = document.getElementById("againpassword");
+var contact = document.getElementById("contact");
+var form = document.querySelector("form");
+var errorMessage = document.getElementById("errorMessage");
 
-    var a= document.getElementsByClassName("n1");
-    var b= document.getElementsByClassName("n2");
-    var c= document.getElementsByClassName("n3");
-    var d= document.getElementsByClassName("n4");
 
+form.addEventListener("submit" , (e) => {
+   var errors = [];
 
-    if(a==""||b==""||c==""||d==""){
-    alert("All Field Are mendortaty");
-        return false;
-     }
-    
-     else if(b.length<11 ||b.length>11){
-            alert("number should be of 10 digit ");
-            return false;
-        }
-
- else if(isNaN(b)){
-    alert("only number are allowed")
-    return false;
- }
-
- else if (c!=d){
-    alert("please enter same password");
-    return false;
- }
-
-  else
-{
-    true;
-  }
+   
+if(username.value === ""){
+   errors.push("Username required")
+}
+if(password.value.length < 4){
+   errors.push("Password must be at least 4 charaters")
 
 }
+ if(password.value=== ''){
+   errors.push("plase enter the password")
+}
+
+if(againpassword.value===''){
+   errors.push("please enter the same password")
+
+}
+if(password.value !== againpassword.value){
+   errors.push("Passwords do not match")
+
+}
+
+
+
+if(contact.value.length < 10){
+   errors.push("The number should be at least 10 marks")
+
+}
+
+else{
+   alert("All Done");
+}
+
+
+   if(errors.length > 0){
+      e.preventDefault();
+      errorMessage.toggleAttribute('hidden');
+      errorMessage.innerHTML = errors.join(', ');
+   }
+   
+})
+
+
+
